@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import dataOngs from "../database/ongs"
 
 export function Home() {
   const navigate = useNavigate();
   const [ongs, setOngs] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     dataOngs.then((data) => {
@@ -13,16 +13,43 @@ export function Home() {
     });
   }, [])
 
+  const filteredOngs = search.length > 0
+    ? ongs.filter(ong => ong.name.toLowerCase().includes(search.toLowerCase()))
+    : [];
+
   return (
     <div>
       <h1>Home</h1>
+      <input type="text" onChange={e => setSearch(e.target.value)}/>
       {
-        ongs.length > 0 && (
-          ongs.map((ong, index) => {
-            return (
-              <button key={index} onClick={() => navigate(`/ong/${ong.slug}`)}>{ong.name}</button>
-            )
-          })
+        filteredOngs.length > 0 ? (
+          <div>
+            {
+              filteredOngs.map((ong, index) => {
+                return (
+                  <div key={index} onClick={() => navigate(`/ong/${ong.slug}`)}>
+                    <img width="300" src={ong.logo} alt={`Logo ${ong.name}`} />
+                    <p>{ong.name}</p>
+                  </div>
+                )
+              })
+            }
+          </div>
+        ) : (
+          <div>
+            {
+              ongs.length > 0 && (
+                ongs.map((ong, index) => {
+                  return (
+                    <div key={index} onClick={() => navigate(`/ong/${ong.slug}`)}>
+                      <img width="300" src={ong.logo} alt={`Logo ${ong.name}`} />
+                      <p>{ong.name}</p>
+                    </div>
+                  )
+                })
+              )
+            }
+          </div>
         )
       }
     </div>
