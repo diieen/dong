@@ -20,6 +20,7 @@ export function Home() {
   return (
     <div>
       <h1>Home</h1>
+      <button onClick={() => navigate("/report")}>Report</button>
       <input type="text" onChange={e => setSearch(e.target.value)}/>
       {
         filteredOngs.length > 0 ? (
