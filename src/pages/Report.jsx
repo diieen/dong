@@ -17,19 +17,12 @@ export function Report() {
 
   const geolocation = navigator.geolocation.watchPosition(
     (position => {
-      // fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=18&addressdetails=1`)
-      // .then(res => res.json())
-      // .then(data => {
-      //   console.log(data);
-      // })
-
       if (position.coords.accuracy <= 20) {
-        // setCords({
-        //   lat: position.coords.latitude, 
-        //   long: position.coords.longitude,
-        //   accuracy: position.coords.accuracy
-        // });
-        alert(`${position.coords.latitude}, ${position.coords.longitude}`);
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=18&addressdetails=1`)
+        .then(res => res.json())
+        .then(data => {
+          alert(`${data.address.road}, ${data.address.suburb} - ${data.address.city}`);
+        })
       }
     })
   );
