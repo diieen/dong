@@ -24,20 +24,21 @@ export function Report() {
       // })
 
       if (position.coords.accuracy <= 20) {
-        setCords({
-          lat: position.coords.latitude, 
-          long: position.coords.longitude,
-          accuracy: position.coords.accuracy
-        });
+        // setCords({
+        //   lat: position.coords.latitude, 
+        //   long: position.coords.longitude,
+        //   accuracy: position.coords.accuracy
+        // });
+        alert(`${position.coords.latitude}, ${position.coords.longitude}`);
       }
     })
   );
 
-  if (cords.accuracy <= 20) {
-    navigator.geolocation.clearWatch(geolocation);
+  // if (cords.accuracy <= 20) {
+  //   navigator.geolocation.clearWatch(geolocation);
 
-    setAddress('foi')
-  }
+  //   setAddress('foi')
+  // }
 
   return (
     <div>
