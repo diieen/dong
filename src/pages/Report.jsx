@@ -31,7 +31,7 @@ export function Report() {
     })
   );
 
-  if (cords.accuracy <= 15) {
+  if (cords.accuracy <= 20) {
     navigator.geolocation.clearWatch(geolocation);
 
     setAddress('foi')
