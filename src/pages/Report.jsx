@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Report() {
   const [img, setImg] = useState(null);
   const [cords, setCords] = useState({});
+  const [address, setAddress] = useState('');
 
   const changeImg = (e) => {
     let reader = new FileReader();
@@ -14,7 +15,7 @@ export function Report() {
     reader.readAsDataURL(e);
   }
 
-  navigator.geolocation.watchPosition(
+  const geolocation = navigator.geolocation.watchPosition(
     (position => {
       // fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=18&addressdetails=1`)
       // .then(res => res.json())
@@ -30,6 +31,12 @@ export function Report() {
     })
   );
 
+  if (cords.accuracy <= 15) {
+    navigator.geolocation.clearWatch(geolocation);
+
+    setAddress('foi')
+  }
+
   return (
     <div>
       <h1>Report</h1>
@@ -41,6 +48,7 @@ export function Report() {
         <button type="submit">Enviar</button>
         <p>Coordenadas: {cords.lat}, {cords.long}</p>
         <p>Accuracy: {cords.accuracy}</p>
+        <p>Address: {address}</p>
       </form>
     </div>
   );
