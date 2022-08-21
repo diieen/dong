@@ -3,7 +3,6 @@ import { useState } from "react";
 export function Report() {
   const [img, setImg] = useState(null);
   const [cords, setCords] = useState({});
-  const [cords2, setCords2] = useState({});
 
   const changeImg = (e) => {
     let reader = new FileReader();
@@ -15,19 +14,21 @@ export function Report() {
     reader.readAsDataURL(e);
   }
 
-  navigator.geolocation.getCurrentPosition((position => {
-    setCords({
-      lat: position.coords.latitude, 
-      long: position.coords.longitude
-    });
-  }))
+  navigator.geolocation.watchPosition(
+    (position => {
+      // fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=18&addressdetails=1`)
+      // .then(res => res.json())
+      // .then(data => {
+      //   console.log(data);
+      // })
 
-  navigator.geolocation.watchPosition((position => {
-    setCords2({
-      lat: position.coords.latitude, 
-      long: position.coords.longitude
-    });
-  }))
+      setCords({
+        lat: position.coords.latitude, 
+        long: position.coords.longitude,
+        accuracy: position.coords.accuracy
+      });
+    })
+  );
 
   return (
     <div>
@@ -39,7 +40,7 @@ export function Report() {
         }
         <button type="submit">Enviar</button>
         <p>Coordenadas: {cords.lat}, {cords.long}</p>
-        <p>Coordenadas2: {cords2.lat}, {cords2.long}</p>
+        <p>Accuracy: {cords.accuracy}</p>
       </form>
     </div>
   );
