@@ -22,6 +22,7 @@ export function Report() {
         .then(res => res.json())
         .then(data => {
           alert(`${data.address.road}, ${data.address.suburb} - ${data.address.city}`);
+          navigator.geolocation.clearWatch(geolocation);
         })
       }
     })
