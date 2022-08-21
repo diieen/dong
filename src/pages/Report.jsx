@@ -23,11 +23,13 @@ export function Report() {
       //   console.log(data);
       // })
 
-      setCords({
-        lat: position.coords.latitude, 
-        long: position.coords.longitude,
-        accuracy: position.coords.accuracy
-      });
+      if (position.coords.accuracy <= 20) {
+        setCords({
+          lat: position.coords.latitude, 
+          long: position.coords.longitude,
+          accuracy: position.coords.accuracy
+        });
+      }
     })
   );
 
