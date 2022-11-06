@@ -4,10 +4,6 @@ import "../sass/_home.scss"
 export function Home() {
   const navigate = useNavigate();
 
-  
-
-  
-
   return (
     <div>
       <h1>Home</h1>

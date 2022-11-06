@@ -19,7 +19,7 @@ const Header = () => {
             <div className='header-container justify-between'>
                 <a href="" className='title-header'>Reportar abandono </a>
                 <a href="" className='title-header'>Doações</a>
-                <a href="" className='title-header'>Ongs</a>
+                <a href="/ong" className='title-header'>Ongs</a>
             </div>
             <div className='header-container justify-center'>
                 <a href="/">
