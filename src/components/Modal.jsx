@@ -1,3 +1,5 @@
+import "../sass/modal.scss"
+
 const Modal = (props) => {
     const { children, isOpen } = props;
     return (

@@ -1,10 +1,14 @@
 import { X } from 'phosphor-react';
 import UserIcon from '../assets/images/user-icon.svg';
 
-const LoginModal = ({setIsOpen}) => {
+const LoginModal = (props) => {
+    const {setIsOpen, setLoginType} = props;
     return(
         <div className="container-modal-login">
-            <div className='icon-x' onClick={() => {setIsOpen(false)}}>
+            <div className='icon-x' onClick={() => {
+                setIsOpen(false);
+                setLoginType(true);
+                }}>
                 <X size={40} color="#B87932" />
             </div>
             <div className="login-content-1">
@@ -16,13 +20,13 @@ const LoginModal = ({setIsOpen}) => {
             </div>
             <div className="login-content-3">
                 <form action="" className='form-login'>
-                    <input type="email" className="input login-email" placeholder='Ex: teste@gmail.com'/>
-                    <input type="password" className="input login-senha" placeholder='Senha'/>
+                    <input type="email" className="input login-email" placeholder='Ex: teste@gmail.com' required/>
+                    <input type="password" className="input login-senha" placeholder='Senha' required/>
                     <a href="" className="link-login">Esqueci minha senha </a>
                     <button type="submit" className="btn-login">Entrar</button>
                 </form>
             </div>
-            <div className="login-content-4">
+            <div className="login-content-4" onClick={() => {setLoginType(false)}}>
                 <p>Casdastre-se</p>
             </div>
         </div>
