@@ -1,17 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import dataOngs from "../database/ongs"
-import Modal from "../components/Modal";
-import LoginModal from "../components/LoginModal";
 import "../sass/_home.scss"
-import RegisterModal from "../components/RegisterModal";
+import Header from "../components/Header";
 
 export function Home() {
   const navigate = useNavigate();
   const [ongs, setOngs] = useState([]);
   const [search, setSearch] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
-  const [loginType, setLoginType] = useState(true);
 
   useEffect(() => {
     dataOngs.then((data) => {
@@ -25,12 +21,8 @@ export function Home() {
 
   return (
     <div>
-      <h1 onClick={() => {setIsOpen(true)}}>Home</h1>
-      <Modal isOpen={isOpen}>
-        {
-          loginType ? <LoginModal setIsOpen={setIsOpen} setLoginType={setLoginType}/> : <RegisterModal setIsOpen={setIsOpen} setLoginType={setLoginType}/>
-        }
-      </Modal>
+      <Header/>
+      <h1>Home</h1>
       <button onClick={() => navigate("/report")}>Report</button>
       <input type="text" onChange={e => setSearch(e.target.value)}/>
       {
