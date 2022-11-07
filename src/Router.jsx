@@ -10,7 +10,7 @@ export function Router(){
             <Route path="" element={<Home />} />
             <Route path="ong" element={<OngsList />} />
             <Route path="/ong/:slug" element={<Ongs />} />
-            <Route path="/report" element={<Report />} />
+            <Route path="/reportar-abandono" element={<Report />} />
         </Routes>
     )
 }

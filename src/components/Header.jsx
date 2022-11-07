@@ -17,7 +17,7 @@ const Header = () => {
                 }
             </Modal>
             <div className='header-container justify-between'>
-                <a href="" className='title-header'>Reportar abandono </a>
+                <a href="/reportar-abandono" className='title-header'>Reportar abandono </a>
                 <a href="" className='title-header'>Doações</a>
                 <a href="/ong" className='title-header'>Ongs</a>
             </div>

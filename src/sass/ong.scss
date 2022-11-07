@@ -1,0 +1,42 @@
+.ong-main{
+    margin: 0 auto;
+    max-width: 1200px;
+
+    & .ong-content {
+        margin: 0 auto;
+        max-width: 870px;
+        color: #3D3934;
+        font-weight: 500;
+
+        & h1 {
+            font-weight: 700;
+            font-size: 36px;
+            line-height: 44px;
+            color: #38250F;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        & span {
+            font-size: 14px;
+        }
+
+        & a {
+            color: #38250F;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        & div {
+            max-width: 870px;
+            max-height: 240px;
+            display: flex;
+            justify-content: center;
+
+            & img {
+                width: auto;
+                max-width: 870px;
+            }
+        }
+    }
+}

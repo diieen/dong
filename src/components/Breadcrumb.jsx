@@ -3,7 +3,8 @@ import "../sass/breadcrumb.scss"
 
 const BreadCrumb = ({ items }) => {
     const path = items.pathname.split("/");
-    console.log(path);
+    // console.log(path);
+    
     return (
         <div className="breadcrumb">
             <Link to="/" className="breadcrumb-item">Home</Link>
@@ -13,7 +14,7 @@ const BreadCrumb = ({ items }) => {
                         return (
                             <>
                                 <span> / </span>
-                                <Link key={index} to={`/${item}`} className={`${index == path.length - 1 ? "breadcrumb-strong" : ""} breadcrumb-item`}>{item}</Link>
+                                <Link key={index} to={`/${item}`} className={`${index == path.length - 1 ? "breadcrumb-strong" : ""} breadcrumb-item`}>{item == "reportar-abandono" ? "Reportar abandono" : item}</Link>
                             </>
                         )
                     }

@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import BreadCrumb from "../components/Breadcrumb";
 
 export function Report() {
   const [img, setImg] = useState(null);
   const [cords, setCords] = useState({});
   const [address, setAddress] = useState('');
+  const url = useLocation();
 
   const changeImg = (e) => {
     let reader = new FileReader();
@@ -36,6 +39,7 @@ export function Report() {
 
   return (
     <div>
+      <BreadCrumb items={url} />
       <h1>Report</h1>
       <form action="">
         <input type="file" onChange={(e) => changeImg(e.target.files[0])} />

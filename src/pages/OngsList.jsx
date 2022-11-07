@@ -5,13 +5,14 @@ import "../sass/ongs-list.scss"
 
 
 const OngsList = () => {
-    const teste = useLocation();
+    const url = useLocation();
 
     return (
         <div className="ongs-list">
             <div className="ongs-list-main">
-                <BreadCrumb items={teste} />
+                <BreadCrumb items={url} />
                 <h1>Ongs</h1>
+                {/* <input type="text" onChange={e => setSearch(e.target.value)}/> */}
                 <OngList/>
             </div>
             
