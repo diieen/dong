@@ -6,7 +6,7 @@ import "../sass/donate.scss"
 import dataOngs from "../database/ongs"
 
 const Donate = () => {
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState();
     const url = useLocation();
     const [ongs, setOngs] = useState([]);
     dataOngs.then((data) => {
@@ -29,7 +29,7 @@ const Donate = () => {
                         })
                     }
                 </select>
-                <PaymentData ong={ongs[selected].paymentData}/>
+                {selected ? <PaymentData ong={ongs[selected]}/> : <></>}
             </div>
         </div>
     );
