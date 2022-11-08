@@ -1,6 +1,7 @@
 .breadcrumb {
     font-size: 12px;
     margin-top: 50px;
+    display: flex;
 
     &-item{
     text-decoration: none;
@@ -10,5 +11,11 @@
 
     &-strong {
         font-weight: 600;
+    }
+}
+
+.bread-content {
+    & span {
+        margin: 0 5px;
     }
 }

@@ -2,6 +2,11 @@ body{
     margin: 0px;
     padding: 0px;
     font-family: 'roboto', sans-serif;
+    min-height: 100vh;
+}
+
+#root{
+    padding-bottom: 58px;
 }
 
 .header{
@@ -79,7 +84,8 @@ body{
     height: 55px;
     width: 100vw;
     border-top: 3px solid #C39C6F;
-    ;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-content{
