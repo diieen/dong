@@ -12,10 +12,10 @@ const BreadCrumb = ({ items }) => {
                 path.map((item, index) => {
                     if (index !== 0) {
                         return (
-                            <>
-                                <span> / </span>
-                                <Link key={index} to={`/${item}`} className={`${index == path.length - 1 ? "breadcrumb-strong" : ""} breadcrumb-item`}>{item == "reportar-abandono" ? "Reportar abandono" : item}</Link>
-                            </>
+                            <div key={index} className={`bread-content bread-${index}`}>
+                                <span>/</span>
+                                <Link to={`/${item}`} className={`${index == path.length - 1 ? "breadcrumb-strong" : ""} breadcrumb-item`}>{item == "reportar-abandono" ? "Reportar abandono" : item == "doacao" ? "doação" : item}</Link>
+                            </div>
                         )
                     }
                 })

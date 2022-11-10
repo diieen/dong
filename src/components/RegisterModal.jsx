@@ -57,7 +57,7 @@ const RegisterModal = (props) => {
                             <input type="text" className="input register-cep" name="cep" placeholder='CEP' required />
                             <p className='text-cep'>Não sabe seu CEP? <a href="">Consute aqui.</a></p>
                         </div>
-                        <input type="text" className="input register-address" name="street" placeholder='Endereço' required />
+                        <input type="text" className="input register-address" name="street" placeholder='Rua' required />
                         <div className='flex gap-10'>
                             <input type="text" className="input register-number" name="number" placeholder='Numero' required />
                             <input type="text" className="input register-complement" name="complement" placeholder='Complemento' />

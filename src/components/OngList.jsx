@@ -28,7 +28,8 @@ const OngList = () => {
                                     ...ong
                                 }
                                 return (
-                                    <OngCard ong={data}/>
+                                    
+                                    <OngCard key={index} ong={data}/>
                                 )
                             })
                         }
@@ -43,7 +44,7 @@ const OngList = () => {
                                         ...ong
                                     }
                                     return (
-                                        <OngCard ong={data}/>
+                                        <OngCard key={index}  ong={data}/>
                                     )
                                 })
                             )

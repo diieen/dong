@@ -24,12 +24,12 @@ const Donate = () => {
                     {
                         ongs.map((ong, index) => {
                             return (
-                                ong.paymentData ? (<option value={index}>{ong.name}</option>) : null
+                                ong.paymentData ? (<option key={index} value={index}>{ong.name}</option>) : null
                             )
                         })
                     }
                 </select>
-                {selected ? <PaymentData ong={ongs[selected]}/> : <></>}
+                {selected ? <PaymentData ong={ongs[selected].paymentData}/> : <></>}
             </div>
         </div>
     );
