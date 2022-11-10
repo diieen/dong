@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import UserIcon from '../assets/images/user-icon.svg';
+import UserIcon from '../assets/svg/UserIcon';
 import LogoDong from '../assets/images/logo-dong.svg';
 import RegisterModal from "../components/RegisterModal";
 import Modal from "../components/Modal";
@@ -31,7 +31,7 @@ const Header = () => {
                     setIsOpen(true);
                     setLoginType(true);
                 }}>
-                    <img src={UserIcon} alt="" />
+                    <UserIcon/>
                     <p className='title-header'>LOGIN</p>
                 </div>
                 <div className='flex cursor-pointer' onClick={() => {
