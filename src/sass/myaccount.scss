@@ -1,0 +1,35 @@
+.my-account {
+    padding-left: 190px;
+    color: #38250F;
+
+    &-title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 44px;
+        margin-bottom: 0px;
+        text-transform: capitalize;
+    }
+
+    &-paragraph {
+        margin-top: 5px;
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 500;
+    }
+
+    &-links {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
+
+.link-selected {
+    color: #B87932;
+    text-decoration: underline;
+}
+
+.links-container {
+    margin-top: 40px;
+}

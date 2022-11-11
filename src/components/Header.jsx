@@ -46,11 +46,12 @@ const Header = () => {
             {user 
             ?
             <div className='header-container flex-end gap-10'>
-                <div className='flex gap-10 cursor-pointer align-center' onClick={() => {
+                <a href='/minha-conta' className='flex gap-10 cursor-pointer align-center' onClick={() => {
+                    
                 }}>
                     <UserIcon/>
                     <p className='title-header'>{user.name}</p>
-                </div>
+                </a>
                 <div className='flex cursor-pointer' onClick={() => {
                     localStorage.removeItem('user');
                     localStorage.removeItem('logged');
