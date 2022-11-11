@@ -1,13 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserIcon from '../assets/svg/UserIcon';
 import LogoDong from '../assets/images/logo-dong.svg';
 import RegisterModal from "../components/RegisterModal";
 import Modal from "../components/Modal";
+import getUsers from '../database/users';
 import LoginModal from "../components/LoginModal";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [loginType, setLoginType] = useState(true);
+    const [user, setUser] = useState();
+
+    const saveUser = () => {
+        getUsers.then((data) => {
+            let users = data.find((user) => user.email === localStorage.user);
+            if (users) {
+                setUser(users)
+            }
+        });
+    }
+
+    useEffect(() => {
+        localStorage.user ?
+        saveUser()
+        : null
+    },[isOpen])
 
     return (
         <header className="header">
@@ -26,13 +43,32 @@ const Header = () => {
                     <img src={LogoDong} alt="" />
                 </a>
             </div>
+            {user 
+            ?
             <div className='header-container flex-end gap-10'>
-                <div className='flex gap-10 cursor-pointer' onClick={() => {
+                <div className='flex gap-10 cursor-pointer align-center' onClick={() => {
+                }}>
+                    <UserIcon/>
+                    <p className='title-header'>{user.name}</p>
+                </div>
+                <div className='flex cursor-pointer' onClick={() => {
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('logged');
+                    //window.location.reload(true);
+                    setUser(null);
+                }}>
+                    <p className='title-header title-header-2'>(Sair)</p>
+                </div>
+            </div>
+            : 
+            <div className='header-container flex-end gap-10'>
+                <div className='flex gap-10 cursor-pointer align-center' onClick={() => {
                     setIsOpen(true);
                     setLoginType(true);
                 }}>
                     <UserIcon/>
                     <p className='title-header'>LOGIN</p>
+
                 </div>
                 <div className='flex cursor-pointer' onClick={() => {
                     setIsOpen(true);
@@ -41,6 +77,8 @@ const Header = () => {
                     <p className='title-header'>CADASTRE-SE</p>
                 </div>
             </div>
+            }
+            
         </header>
     );
 }
