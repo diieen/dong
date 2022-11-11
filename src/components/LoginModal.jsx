@@ -1,9 +1,12 @@
 import { X } from "phosphor-react";
 import { useState } from "react";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+
+import registerUser from "../database/register";
 
 import UserIcon from "../assets/images/user-icon.svg";
 import GoogleIcon from "../assets/svg/GoogleIcon";
+import FacebookAuthIcon from "../assets/svg/FacebookAuthIcon";
 import getUsers from "../database/users";
 
 const LoginModal = (props) => {
@@ -12,6 +15,7 @@ const LoginModal = (props) => {
 
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
   const login = (e) => {
     e.preventDefault();
@@ -62,7 +66,9 @@ const LoginModal = (props) => {
             }
     
             registerUser(data).then(() => {
-                window.reload();
+                localStorage.setItem("user", user.email);
+                localStorage.setItem("logged", true);
+                window.location.reload();
             })
           }
         });
@@ -71,11 +77,54 @@ const LoginModal = (props) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
 
-        console.log(errorCode, errorMessage, email, credential);
+        console.log(errorCode, errorMessage, email);
       });
   };
+
+  const facebookLogin = () => {
+    signInWithPopup(auth, facebookProvider)
+      .then((result) => {
+        const userData = result.user;
+
+        getUsers.then((data) => {
+          let user = data.find((user) => user.email === userData.email);
+          if (user) {
+            localStorage.setItem("user", user.email);
+            localStorage.setItem("logged", true);
+            window.location.reload();
+          } else {
+            const data = {
+                name: userData.displayName,
+                email: userData.email,
+                password: null,
+                phone: null,
+                cpf: null,
+                cep: null,
+                street: null,
+                number: null,
+                complement: null,
+                district: null,
+                city: null,
+                state: null
+            }
+    
+            registerUser(data).then(() => {
+                localStorage.setItem("user", user.email);
+                localStorage.setItem("logged", true);
+                window.location.reload();
+            })
+          }
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+
+        console.log(errorCode, errorMessage, email);
+      });
+  }
 
   return (
     <div className="container-modal-login">
@@ -137,6 +186,11 @@ const LoginModal = (props) => {
         <button className="btn-login-google" onClick={googleLogin}>
           <GoogleIcon />
           <span>Entrar com Google</span>
+        </button>
+
+        <button className="btn-login-facebook" onClick={facebookLogin}>
+          <FacebookAuthIcon />
+          <span>Entrar com Facebook</span>
         </button>
       </div>
     </div>
