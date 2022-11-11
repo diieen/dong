@@ -26,9 +26,18 @@ body{
 
 .input{
     width: 100%;
+    box-sizing: border-box;
     border: none;
-    border-bottom: 1px solid #000;
-    padding: 10px 10px;
+    border-bottom: 1px solid #0000003b;
+    padding-bottom: 7px;
+    padding-left: 5px;
+    margin-top: 5px;
+    transition: .3s;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #44d2ffa1;
 }
 
 .hidden{
