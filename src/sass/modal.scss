@@ -9,7 +9,7 @@
     align-items: center;
     z-index: 2;
 }
-.container-modal-login{
+.container-modal-login, .container-modal-register{
     background-color: #fff;
     padding: 40px 85px 40px 85px;
     position: relative;
@@ -89,16 +89,11 @@
     width: 30px;
     height: 30px;
 }
-
-.container-modal-register{
-    width: 952px;
-    height: 445px;
-    background-color: #fff;
-}
 .form-content{
     display: flex;
     justify-content: space-around;
     margin-bottom: 10px;
+    gap: 20px;
 }
 .register-content-2{
     max-width: 356px;
@@ -166,4 +161,11 @@ button.btn-login-google:hover, button.btn-login-facebook:hover {
 
 button.btn-login-facebook {
     margin-top: 10px;
+}
+
+.container-modal-register .cursor-pointer {
+    width: fit-content;
+    margin: auto;
+    color: #3D3934;
+    font-weight: 500;
 }

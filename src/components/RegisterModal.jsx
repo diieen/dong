@@ -28,6 +28,53 @@ const RegisterModal = (props) => {
         })
     }
 
+    const maskCep = (e) => {
+        let value = e.target.value;
+        value = value.replace(/\D/g, "");
+        value = value.replace(/(\d{5})(\d)/, "$1-$2");
+        e.target.value = value;
+    }
+
+    const maskCpf = (e) => {
+        let value = e.target.value;
+        value = value.replace(/\D/g, "");
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d)/, "$1.$2");
+        value = value.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+        e.target.value = value;
+    }
+
+    const maskPhone = (e) => {
+        let value = e.target.value;
+        value = value.replace(/\D/g, "");
+        value = value.replace(/(\d{2})(\d)/, "($1) $2");
+        value = value.replace(/(\d{4})(\d)/, "$1-$2");
+        e.target.value = value;
+    }
+
+    const getAdress = (e) => {
+        const cep = e.target.value;
+
+        if (cep.length === 9) {
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+            fetch(url)
+                .then((response) => response.json())
+                .then((data) => {
+                    document.querySelector("input[name='street']").value = data.logradouro;
+                    document.querySelector("input[name='district']").value = data.bairro;
+                    document.querySelector("input[name='city']").value = data.localidade;
+                    document.querySelector("input[name='state']").value = data.uf;
+
+                    console.log(data)
+
+                    data.logradouro != "" ? document.querySelector("input[name='street']").setAttribute('disabled', true) : document.querySelector("input[name='street']").removeAttribute('disabled')
+                    data.bairro != "" ? document.querySelector("input[name='district']").setAttribute('disabled', true) : document.querySelector("input[name='district']").removeAttribute('disabled')
+                    data.localidade != "" ? document.querySelector("input[name='city']").setAttribute('disabled', true) : document.querySelector("input[name='city']").removeAttribute('disabled')
+                    data.uf != "" ? document.querySelector("input[name='state']").setAttribute('disabled', true) : document.querySelector("input[name='state']").removeAttribute('disabled')
+                });
+        }
+    }
+
     return (
         <div className="container-modal-register">
             <div className='icon-x' onClick={() => {
@@ -47,14 +94,14 @@ const RegisterModal = (props) => {
                         <input type="email" className="input register-email" name="email" placeholder='Ex: teste@gmail.com' required />
                         <input type="password" className="input register-password" name="password" placeholder='Senha' required />
                         <div className='flex gap-10'>
-                            <input type="text" className="input register-phone" name="phone" placeholder='Telefone' required />
-                            <input type="text" className="input register-cpf" name="cpf" placeholder='CPF' required />
+                            <input type="text" className="input register-phone" name="phone" maxLength={15} onChange={(e) => maskPhone(e)} placeholder='Telefone' required />
+                            <input type="text" className="input register-cpf" name="cpf" maxLength={14} onChange={(e) => maskCpf(e)} placeholder='CPF' required />
                         </div>
                     </div>
                     <div className="register-content-2">
                         <p className=''>Endereço :</p>
                         <div className='flex gap-10'>
-                            <input type="text" className="input register-cep" name="cep" placeholder='CEP' required />
+                            <input type="text" className="input register-cep" maxLength={9} onChange={(e) => (maskCep(e), getAdress(e))} name="cep" placeholder='CEP' required />
                             <p className='text-cep'>Não sabe seu CEP? <a href="">Consute aqui.</a></p>
                         </div>
                         <input type="text" className="input register-address" name="street" placeholder='Rua' required />

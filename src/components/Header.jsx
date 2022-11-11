@@ -54,8 +54,7 @@ const Header = () => {
                 <div className='flex cursor-pointer' onClick={() => {
                     localStorage.removeItem('user');
                     localStorage.removeItem('logged');
-                    //window.location.reload(true);
-                    setUser(null);
+                    window.location.reload(true);
                 }}>
                     <p className='title-header title-header-2'>(Sair)</p>
                 </div>

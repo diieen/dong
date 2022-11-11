@@ -66,7 +66,7 @@ const facebookProvider = new FacebookAuthProvider();
             }
     
             registerUser(data).then(() => {
-                localStorage.setItem("user", user.email);
+                localStorage.setItem("user", userData.email);
                 localStorage.setItem("logged", true);
                 window.location.reload();
             })
