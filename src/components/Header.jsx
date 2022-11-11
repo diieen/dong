@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import UserIcon from '../assets/images/user-icon.svg';
+import UserIcon from '../assets/svg/UserIcon';
 import LogoDong from '../assets/images/logo-dong.svg';
 import RegisterModal from "../components/RegisterModal";
 import Modal from "../components/Modal";
@@ -46,9 +46,9 @@ const Header = () => {
             {user 
             ?
             <div className='header-container flex-end gap-10'>
-                <div className='flex gap-10 cursor-pointer' onClick={() => {
+                <div className='flex gap-10 cursor-pointer align-center' onClick={() => {
                 }}>
-                    <img src={UserIcon} alt="" />
+                    <UserIcon/>
                     <p className='title-header'>{user.name}</p>
                 </div>
                 <div className='flex cursor-pointer' onClick={() => {
@@ -62,11 +62,11 @@ const Header = () => {
             </div>
             : 
             <div className='header-container flex-end gap-10'>
-                <div className='flex gap-10 cursor-pointer' onClick={() => {
+                <div className='flex gap-10 cursor-pointer align-center' onClick={() => {
                     setIsOpen(true);
                     setLoginType(true);
                 }}>
-                    <img src={UserIcon} alt="" />
+                    <UserIcon/>
                     <p className='title-header'>LOGIN</p>
 
                 </div>
