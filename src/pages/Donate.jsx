@@ -17,7 +17,7 @@ const Donate = () => {
     return (
         <div className="donate">
             <BreadCrumb items={url}/>
-            <div className="donate-main">
+            <div className={`${selected ? "padding-footer" : "padding-footer-2"} donate-main`}>
                 <h2>Doações</h2>
                 <p>Lista de ONGS:</p>
                 <select name="" id="" onChange={(e) => {setSelected(e.target.value)}}>

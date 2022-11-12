@@ -8,7 +8,7 @@ export function Ong(props) {
   console.log(ong)
   
   return (
-    <div className="ong-main">
+    <div className="ong-main padding-footer">
         <BreadCrumb items={teste} />
         <div className="ong-content">
           <h1>{ong.name}</h1>

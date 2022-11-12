@@ -9,7 +9,7 @@ const OngsList = () => {
 
     return (
         <div className="ongs-list">
-            <div className="ongs-list-main">
+            <div className="ongs-list-main padding-footer-2">
                 <BreadCrumb items={url} />
                 <h1>Ongs</h1>
                 <OngList/>
