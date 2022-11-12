@@ -12,7 +12,6 @@ const OngsList = () => {
             <div className="ongs-list-main">
                 <BreadCrumb items={url} />
                 <h1>Ongs</h1>
-                {/* <input type="text" onChange={e => setSearch(e.target.value)}/> */}
                 <OngList/>
             </div>
             

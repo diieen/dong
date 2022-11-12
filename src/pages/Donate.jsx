@@ -9,6 +9,7 @@ const Donate = () => {
     const [selected, setSelected] = useState();
     const url = useLocation();
     const [ongs, setOngs] = useState([]);
+    
     dataOngs.then((data) => {
         setOngs(data);
     });

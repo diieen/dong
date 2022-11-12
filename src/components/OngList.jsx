@@ -4,7 +4,6 @@ import OngCard from "./OngCard";
 
 const OngList = () => {
     const [ongs, setOngs] = useState([]);
-    const [search, setSearch] = useState('');
 
     useEffect(() => {
         dataOngs.then((data) => {
@@ -12,46 +11,23 @@ const OngList = () => {
         });
     }, [])
 
-    const filteredOngs = search.length > 0
-        ? ongs.filter(ong => ong.name.toLowerCase().includes(search.toLowerCase()))
-        : [];
-
     return (
         <div className="ongs-list-container">
-            {
-                filteredOngs.length > 0 ? (
-                    <>
-                        {
-                            filteredOngs.map((ong, index) => {
-                                const data = {
-                                    key: index,
-                                    ...ong
-                                }
-                                return (
-                                    
-                                    <OngCard key={index} ong={data}/>
-                                )
-                            })
-                        }
-                    </>
-                ) : (
-                    <>
-                        {
-                            ongs.length > 0 && (
-                                ongs.map((ong, index) => {
-                                    const data = {
-                                        key: index,
-                                        ...ong
-                                    }
-                                    return (
-                                        <OngCard key={index}  ong={data}/>
-                                    )
-                                })
+            <>
+                {
+                    ongs.length > 0 && (
+                        ongs.map((ong, index) => {
+                            const data = {
+                                key: index,
+                                ...ong
+                            }
+                            return (
+                                <OngCard key={index} ong={data} />
                             )
-                        }
-                    </>
-                )
-            }
+                        })
+                    )
+                }
+            </>
         </div>
     )
 }

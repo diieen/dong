@@ -12,7 +12,7 @@ export function Report() {
     let reader = new FileReader();
 
     reader.onload = (e) => {
-        setImg(e.target.result);
+      setImg(e.target.result);
     }
 
     reader.readAsDataURL(e);
@@ -22,11 +22,11 @@ export function Report() {
     (position => {
       if (position.coords.accuracy <= 20) {
         fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=18&addressdetails=1`)
-        .then(res => res.json())
-        .then(data => {
-          alert(`${data.address.road}, ${data.address.suburb} - ${data.address.city}`);
-          navigator.geolocation.clearWatch(geolocation);
-        })
+          .then(res => res.json())
+          .then(data => {
+            alert(`${data.address.road}, ${data.address.suburb} - ${data.address.city}`);
+            navigator.geolocation.clearWatch(geolocation);
+          })
       }
     })
   );
@@ -40,16 +40,21 @@ export function Report() {
   return (
     <div>
       <BreadCrumb items={url} />
-      <h1>Report</h1>
+      <h1>Reportar abandono</h1>
+      <p>Encontrou um animalzinho abandonado ? </p>
+      <p>Onde ele se encontra?</p>
+      <p>(Caso esteja no local, permitir o navegador acessar sua localização.)</p>
+      <textarea name="" id="" cols="30" rows="10" placeholder="Descreva o local o mais detalhado possivel (Como por exemplo: Estado; Cidade; Rua; CEP.)"></textarea>
+      <p>Caracteristcas do animal:</p>
+      <textarea name="" id="" cols="30" rows="10" placeholder="Descreva o animal o mais detalhado possivel (Como por exemplo: Raça; Cor; estatura; etc.)"></textarea>
+      <p>Tem uma imagem do local ou do animal?</p>
+      
       <form action="">
-        <input type="file" onChange={(e) => changeImg(e.target.files[0])} />
+        <input type="file" accept="image/png, image/jpeg" multiple onChange={(e) => changeImg(e.target.files[0])} />
         {
-            img && <img src={img} alt="img" />
+          img && <img src={img} alt="img" />
         }
         <button type="submit">Enviar</button>
-        <p>Coordenadas: {cords.lat}, {cords.long}</p>
-        <p>Accuracy: {cords.accuracy}</p>
-        <p>Address: {address}</p>
       </form>
     </div>
   );
