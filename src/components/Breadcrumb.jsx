@@ -3,7 +3,7 @@ import "../sass/breadcrumb.scss"
 
 const BreadCrumb = ({ items }) => {
     const path = items.pathname.split("/");
-    // console.log(path);
+    console.log(items);
     
     return (
         <div className="breadcrumb">

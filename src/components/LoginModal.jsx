@@ -44,15 +44,15 @@ const facebookProvider = new FacebookAuthProvider();
         const userData = result.user;
 
         getUsers.then((data) => {
-          let user = data.find((user) => user.email === userData.email);
+          let user = data.find((user) => user.email === userData?.email);
           if (user) {
             localStorage.setItem("user", user.email);
             localStorage.setItem("logged", true);
             window.location.reload();
           } else {
             const data = {
-                name: userData.displayName,
-                email: userData.email,
+                name: userData?.displayName,
+                email: userData?.email,
                 password: null,
                 phone: null,
                 cpf: null,
@@ -66,7 +66,7 @@ const facebookProvider = new FacebookAuthProvider();
             }
     
             registerUser(data).then(() => {
-                localStorage.setItem("user", user.email);
+                localStorage.setItem("user", user?.email);
                 localStorage.setItem("logged", true);
                 window.location.reload();
             })
