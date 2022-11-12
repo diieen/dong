@@ -1,7 +1,7 @@
 const Awards = (props) => {
     return (
         <div>
-
+            
         </div>
     )
 }

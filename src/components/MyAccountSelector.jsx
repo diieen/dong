@@ -24,6 +24,14 @@ const MyAccountSelector = (props) => {
                 <div onClick={() => {setType(4)}}>
                     <p className={`${type == 4 ? "link-selected" : ""}`}>Trocar a senha</p>
                 </div>
+                <div onClick={() => {
+                    localStorage.removeItem("logged");
+                    localStorage.removeItem("user");
+                    window.location.reload(true);
+                    window.location.href = "/";
+                }}>
+                    <p>Sair</p>
+                </div>
             </div>
             <div>
                 {type === 1 && <PersonalData user={user}/>}
