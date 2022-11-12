@@ -18,11 +18,15 @@ const MyAccount = () => {
         });
     }
 
+    const isLogged = () => {
+        const user = localStorage.user;
+        if (!user) return window.location.href = "/";
+        saveUser();
+    }
+        
     useEffect(() => {
-        localStorage.user ?
-        saveUser()
-        : null
-    },[])
+        isLogged();
+    }, []);
 
     return (
         <div className="my-account">

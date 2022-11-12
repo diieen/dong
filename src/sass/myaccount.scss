@@ -33,3 +33,87 @@
 .links-container {
     margin-top: 40px;
 }
+
+.modal-myaccount {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 10px 20px 28px 20px;
+    margin: 0 0 100px 100px;
+    width: 370px;
+
+    &-2 {
+        width: auto !important;
+    }
+
+    & h3 {
+        margin: 0px;
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 500;
+        color: #B87932;
+        border-bottom: 3px solid #B87932;
+    }
+
+    & p {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+        color: #3D3934;
+        margin-bottom: 0px;
+    }
+
+    & span {
+        font-size: 14px;
+        line-height: 17px;
+        font-weight: 400;
+        color: #38250F;
+    }
+
+    & button {
+        margin-top: 148px;
+        padding: 9px 52px;
+        background: #B87932;
+        border-radius: 5px;
+        border: none;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+}
+
+.div-button {
+    display: flex;
+    justify-content: center;
+
+    &-2 {
+        justify-content: space-between !important;
+    }
+}
+
+.header-address {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & div {
+        display: flex;
+        justify-content: space-between;
+        gap: 13px;
+
+        & img {
+            cursor: pointer;
+        }
+    }
+}
+
+.password-change {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    align-items: center;
+
+    & button {
+        margin-top: 40px;
+        max-width: 179px;
+    }
+}
